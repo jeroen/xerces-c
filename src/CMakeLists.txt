@@ -1276,6 +1276,7 @@ if(XERCES_USE_NETACCESSOR_CURL)
   target_include_directories(xerces-c SYSTEM PRIVATE ${CURL_INCLUDE_DIRS})
 endif()
 
+if(BUILD_SHARED_LIBS)
 if(MSVC)
   # Add configuration-specific library name to resource file.
   target_compile_definitions(xerces-c PRIVATE "XERCES_DLL_NAME=\"$<TARGET_FILE_NAME:xerces-c>\\0\"")
@@ -1305,6 +1306,7 @@ else()
     # to be created when xerces-c.dll seems to be the default.
     set_target_properties(xerces-c PROPERTIES VERSION ${INTERFACE_VERSION_D})
   endif()
+endif()
 endif()
 set_target_properties(xerces-c PROPERTIES FOLDER "Library")
 
